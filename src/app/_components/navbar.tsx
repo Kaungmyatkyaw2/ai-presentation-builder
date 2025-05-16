@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import { AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Sun, Moon, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Menu, Moon, Sun, X } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 interface NavbarProps {
   isDarkMode: boolean;
@@ -38,20 +40,36 @@ const Navbar = ({ isDarkMode, toggleDarkMode }: NavbarProps) => {
     >
       <div className="container flex items-center justify-between">
         <div className="flex items-center">
-          <a href="#" className="flex items-center">
-            <span className="text-2xl font-bold text-vivid">Divine</span>
+          <a href="#" className="flex items-center gap-1">
+            <Image
+              src={isDarkMode ? "/light-icon.png" : "/dark-icon.png"}
+              alt="vivid-logo"
+              className="aspect-auto object-contain"
+              width={30}
+              height={30}
+            />
+            <span className="text-2xl font-bold ">Divine</span>
           </a>
         </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          <a href="#" className="font-medium hover:text-primary transition-colors">
+          <a
+            href="#"
+            className="font-medium hover:text-primary transition-colors"
+          >
             Home
           </a>
-          <a href="#about" className="font-medium hover:text-primary transition-colors">
+          <a
+            href="#about"
+            className="font-medium hover:text-primary transition-colors"
+          >
             About
           </a>
-          <a href="#subscription" className="font-medium hover:text-primary transition-colors">
+          <a
+            href="#subscription"
+            className="font-medium hover:text-primary transition-colors"
+          >
             Pricing
           </a>
           <Button

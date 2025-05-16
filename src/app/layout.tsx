@@ -8,12 +8,20 @@ import "./globals.css";
 
 const manrope = Manrope({
   weight: ["200", "300", "400", "500", "600", "700", "800"],
-  subsets : ["latin"]
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: "Vivid - AI PPT Generator",
   description: "AI Power Presentation Builder",
+  icons: [
+    {
+      rel: "icon",
+      type: "image/png",
+      sizes: "32x32",
+      url: "/dark-icon.png",
+    },
+  ],
 };
 
 export default function RootLayout({
