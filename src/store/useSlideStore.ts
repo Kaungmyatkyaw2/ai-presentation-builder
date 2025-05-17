@@ -1,5 +1,5 @@
+import { Project } from "@/generated/prisma";
 import { ContentItem, Slide, Theme } from "@/lib/types";
-import { Project } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";

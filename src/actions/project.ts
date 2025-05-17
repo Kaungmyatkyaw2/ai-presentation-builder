@@ -4,7 +4,7 @@ import { client } from "@/lib/prisma";
 import { OutlineCard } from "@/lib/types";
 import { JsonValue } from "@prisma/client/runtime/library";
 import { onAuthenticateUser } from "./user";
-import { Project } from "@prisma/client";
+import { Project } from "@/generated/prisma";
 
 export const getAllProjects = async () => {
   try {
@@ -83,7 +83,7 @@ export const getDeletedProjects = async () => {
     });
 
     if (projects.length == 0) {
-      return { status: 404, error: "No Deleted Projects Found",data : [] };
+      return { status: 404, error: "No Deleted Projects Found", data: [] };
     }
 
     return { status: 200, data: projects };
@@ -286,7 +286,7 @@ export const deleteAllProjects = async (projectIds: string[]) => {
     const deletedProjects = await client.project.deleteMany({
       where: {
         id: {
-          in: projectsToDelete.map((p : Project) => p.id),
+          in: projectsToDelete.map((p: Project) => p.id),
         },
       },
     });
@@ -300,5 +300,3 @@ export const deleteAllProjects = async (projectIds: string[]) => {
     return { status: 500, error: "Internal Server Error" };
   }
 };
-
-

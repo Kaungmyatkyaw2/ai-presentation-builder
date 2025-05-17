@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { User } from "@prisma/client";
 import { Upload } from "lucide-react";
 import ThemeSwitcher from "../mode-toggle";
 import NewProjectButton from "./new-project-button";
 import SearchBar from "./upper-info-searchbar";
+import { User } from "@/generated/prisma";
 
 type Props = {
   user: User;

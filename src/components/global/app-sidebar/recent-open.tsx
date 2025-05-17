@@ -8,9 +8,9 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { Project } from "@/generated/prisma";
 import { JsonValue } from "@/generated/prisma/runtime/library";
 import { useSlideStore } from "@/store/useSlideStore";
-import { Project } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 

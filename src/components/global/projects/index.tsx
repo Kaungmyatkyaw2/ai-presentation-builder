@@ -1,9 +1,9 @@
 "use client";
 
 import { containerVariants } from "@/lib/constants";
-import { Project } from "@prisma/client";
 import { motion } from "framer-motion";
 import ProjectCard from "../project-card";
+import { Project } from "@/generated/prisma";
 
 type Props = {
   projects: Project[];
