@@ -12,16 +12,11 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Vivid - AI PPT Generator",
+  title: "Divine - AI PPT Generator",
   description: "AI Power Presentation Builder",
-  icons: [
-    {
-      rel: "icon",
-      type: "image/png",
-      sizes: "32x32",
-      url: "/dark-icon.png",
-    },
-  ],
+  icons: {
+    icon: "dark-icon.png",
+  },
 };
 
 export default function RootLayout({
