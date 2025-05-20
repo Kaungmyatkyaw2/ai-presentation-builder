@@ -1,15 +1,16 @@
 "use client";
 
+import { Project } from "@/generated/prisma";
 import { containerVariants } from "@/lib/constants";
 import { motion } from "framer-motion";
 import ProjectCard from "../project-card";
-import { Project } from "@/generated/prisma";
 
 type Props = {
   projects: Project[];
+  forSold?: boolean;
 };
 
-const Projects = ({ projects }: Props) => {
+const Projects = ({ projects, forSold }: Props) => {
   return (
     <motion.div
       className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
@@ -26,6 +27,8 @@ const Projects = ({ projects }: Props) => {
           isDeleted={project.isDeleted}
           slideData={project?.slides}
           themeName={project.themeName}
+          isSellable={project.isSellable}
+          forSold={forSold}
         />
       ))}
     </motion.div>

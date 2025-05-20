@@ -145,7 +145,8 @@ exports.Prisma.ProjectScalarFieldEnum = {
   isDeleted: 'isDeleted',
   isSellable: 'isSellable',
   thumbnail: 'thumbnail',
-  themeName: 'themeName'
+  themeName: 'themeName',
+  variantId: 'variantId'
 };
 
 exports.Prisma.SortOrder = {

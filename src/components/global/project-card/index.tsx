@@ -18,8 +18,10 @@ type Props = {
   title: string;
   createdAt: string;
   isDeleted?: boolean;
+  isSellable?: boolean;
   slideData: JsonValue;
   themeName: string;
+  forSold?: boolean;
 };
 
 const ProjectCard = ({
@@ -29,6 +31,8 @@ const ProjectCard = ({
   themeName,
   isDeleted,
   slideData,
+  isSellable,
+  forSold,
 }: Props) => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
@@ -128,7 +132,16 @@ const ProjectCard = ({
             >
               {timeAgo(createdAt)}
             </p>
-            {isDeleted ? (
+            {forSold ? (
+              <Button
+                size={"sm"}
+                variant={"ghost"}
+                className="bg-muted dark:bg-muted"
+                disabled={loading}
+              >
+                Buy
+              </Button>
+            ) : isDeleted ? (
               <AlertDialogBox
                 description="This will recover your project and restore your data."
                 className="bg-green-500 text-white dark:bg-green-600 hover:bg-green-600 dark:hover:bg-green-700"

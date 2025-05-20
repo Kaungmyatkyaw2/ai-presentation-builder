@@ -45,4 +45,5 @@ model Project {
   themeName  String   @default("light")
   User       User     @relation("OwnedProjects", fields: [userId], references: [id])
   Purchasers User[]   @relation("PurchasedProjects")
+  variantId  String?  @default("")
 }

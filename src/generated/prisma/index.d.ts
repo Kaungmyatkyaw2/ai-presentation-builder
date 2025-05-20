@@ -2226,6 +2226,7 @@ export namespace Prisma {
     isSellable: boolean | null
     thumbnail: string | null
     themeName: string | null
+    variantId: string | null
   }
 
   export type ProjectMaxAggregateOutputType = {
@@ -2238,6 +2239,7 @@ export namespace Prisma {
     isSellable: boolean | null
     thumbnail: string | null
     themeName: string | null
+    variantId: string | null
   }
 
   export type ProjectCountAggregateOutputType = {
@@ -2252,6 +2254,7 @@ export namespace Prisma {
     isSellable: number
     thumbnail: number
     themeName: number
+    variantId: number
     _all: number
   }
 
@@ -2266,6 +2269,7 @@ export namespace Prisma {
     isSellable?: true
     thumbnail?: true
     themeName?: true
+    variantId?: true
   }
 
   export type ProjectMaxAggregateInputType = {
@@ -2278,6 +2282,7 @@ export namespace Prisma {
     isSellable?: true
     thumbnail?: true
     themeName?: true
+    variantId?: true
   }
 
   export type ProjectCountAggregateInputType = {
@@ -2292,6 +2297,7 @@ export namespace Prisma {
     isSellable?: true
     thumbnail?: true
     themeName?: true
+    variantId?: true
     _all?: true
   }
 
@@ -2379,6 +2385,7 @@ export namespace Prisma {
     isSellable: boolean
     thumbnail: string | null
     themeName: string
+    variantId: string | null
     _count: ProjectCountAggregateOutputType | null
     _min: ProjectMinAggregateOutputType | null
     _max: ProjectMaxAggregateOutputType | null
@@ -2410,6 +2417,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: boolean
     themeName?: boolean
+    variantId?: boolean
     User?: boolean | UserDefaultArgs<ExtArgs>
     Purchasers?: boolean | Project$PurchasersArgs<ExtArgs>
     _count?: boolean | ProjectCountOutputTypeDefaultArgs<ExtArgs>
@@ -2427,6 +2435,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: boolean
     themeName?: boolean
+    variantId?: boolean
     User?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["project"]>
 
@@ -2442,6 +2451,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: boolean
     themeName?: boolean
+    variantId?: boolean
     User?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["project"]>
 
@@ -2457,9 +2467,10 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: boolean
     themeName?: boolean
+    variantId?: boolean
   }
 
-  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "createdAt" | "updatedAt" | "slides" | "userId" | "outlines" | "isDeleted" | "isSellable" | "thumbnail" | "themeName", ExtArgs["result"]["project"]>
+  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "createdAt" | "updatedAt" | "slides" | "userId" | "outlines" | "isDeleted" | "isSellable" | "thumbnail" | "themeName" | "variantId", ExtArgs["result"]["project"]>
   export type ProjectInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     User?: boolean | UserDefaultArgs<ExtArgs>
     Purchasers?: boolean | Project$PurchasersArgs<ExtArgs>
@@ -2490,6 +2501,7 @@ export namespace Prisma {
       isSellable: boolean
       thumbnail: string | null
       themeName: string
+      variantId: string | null
     }, ExtArgs["result"]["project"]>
     composites: {}
   }
@@ -2926,6 +2938,7 @@ export namespace Prisma {
     readonly isSellable: FieldRef<"Project", 'Boolean'>
     readonly thumbnail: FieldRef<"Project", 'String'>
     readonly themeName: FieldRef<"Project", 'String'>
+    readonly variantId: FieldRef<"Project", 'String'>
   }
     
 
@@ -3406,7 +3419,8 @@ export namespace Prisma {
     isDeleted: 'isDeleted',
     isSellable: 'isSellable',
     thumbnail: 'thumbnail',
-    themeName: 'themeName'
+    themeName: 'themeName',
+    variantId: 'variantId'
   };
 
   export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
@@ -3627,6 +3641,7 @@ export namespace Prisma {
     isSellable?: BoolFilter<"Project"> | boolean
     thumbnail?: StringNullableFilter<"Project"> | string | null
     themeName?: StringFilter<"Project"> | string
+    variantId?: StringNullableFilter<"Project"> | string | null
     User?: XOR<UserScalarRelationFilter, UserWhereInput>
     Purchasers?: UserListRelationFilter
   }
@@ -3643,6 +3658,7 @@ export namespace Prisma {
     isSellable?: SortOrder
     thumbnail?: SortOrderInput | SortOrder
     themeName?: SortOrder
+    variantId?: SortOrderInput | SortOrder
     User?: UserOrderByWithRelationInput
     Purchasers?: UserOrderByRelationAggregateInput
   }
@@ -3662,6 +3678,7 @@ export namespace Prisma {
     isSellable?: BoolFilter<"Project"> | boolean
     thumbnail?: StringNullableFilter<"Project"> | string | null
     themeName?: StringFilter<"Project"> | string
+    variantId?: StringNullableFilter<"Project"> | string | null
     User?: XOR<UserScalarRelationFilter, UserWhereInput>
     Purchasers?: UserListRelationFilter
   }, "id">
@@ -3678,6 +3695,7 @@ export namespace Prisma {
     isSellable?: SortOrder
     thumbnail?: SortOrderInput | SortOrder
     themeName?: SortOrder
+    variantId?: SortOrderInput | SortOrder
     _count?: ProjectCountOrderByAggregateInput
     _max?: ProjectMaxOrderByAggregateInput
     _min?: ProjectMinOrderByAggregateInput
@@ -3698,6 +3716,7 @@ export namespace Prisma {
     isSellable?: BoolWithAggregatesFilter<"Project"> | boolean
     thumbnail?: StringNullableWithAggregatesFilter<"Project"> | string | null
     themeName?: StringWithAggregatesFilter<"Project"> | string
+    variantId?: StringNullableWithAggregatesFilter<"Project"> | string | null
   }
 
   export type UserCreateInput = {
@@ -3817,6 +3836,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: string | null
     themeName?: string
+    variantId?: string | null
     User: UserCreateNestedOneWithoutProjectsInput
     Purchasers?: UserCreateNestedManyWithoutPurchasedProjectsInput
   }
@@ -3833,6 +3853,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: string | null
     themeName?: string
+    variantId?: string | null
     Purchasers?: UserUncheckedCreateNestedManyWithoutPurchasedProjectsInput
   }
 
@@ -3847,6 +3868,7 @@ export namespace Prisma {
     isSellable?: BoolFieldUpdateOperationsInput | boolean
     thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     themeName?: StringFieldUpdateOperationsInput | string
+    variantId?: NullableStringFieldUpdateOperationsInput | string | null
     User?: UserUpdateOneRequiredWithoutProjectsNestedInput
     Purchasers?: UserUpdateManyWithoutPurchasedProjectsNestedInput
   }
@@ -3863,6 +3885,7 @@ export namespace Prisma {
     isSellable?: BoolFieldUpdateOperationsInput | boolean
     thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     themeName?: StringFieldUpdateOperationsInput | string
+    variantId?: NullableStringFieldUpdateOperationsInput | string | null
     Purchasers?: UserUncheckedUpdateManyWithoutPurchasedProjectsNestedInput
   }
 
@@ -3878,6 +3901,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: string | null
     themeName?: string
+    variantId?: string | null
   }
 
   export type ProjectUpdateManyMutationInput = {
@@ -3891,6 +3915,7 @@ export namespace Prisma {
     isSellable?: BoolFieldUpdateOperationsInput | boolean
     thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     themeName?: StringFieldUpdateOperationsInput | string
+    variantId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ProjectUncheckedUpdateManyInput = {
@@ -3905,6 +3930,7 @@ export namespace Prisma {
     isSellable?: BoolFieldUpdateOperationsInput | boolean
     thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     themeName?: StringFieldUpdateOperationsInput | string
+    variantId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UuidFilter<$PrismaModel = never> = {
@@ -4158,6 +4184,7 @@ export namespace Prisma {
     isSellable?: SortOrder
     thumbnail?: SortOrder
     themeName?: SortOrder
+    variantId?: SortOrder
   }
 
   export type ProjectMaxOrderByAggregateInput = {
@@ -4170,6 +4197,7 @@ export namespace Prisma {
     isSellable?: SortOrder
     thumbnail?: SortOrder
     themeName?: SortOrder
+    variantId?: SortOrder
   }
 
   export type ProjectMinOrderByAggregateInput = {
@@ -4182,6 +4210,7 @@ export namespace Prisma {
     isSellable?: SortOrder
     thumbnail?: SortOrder
     themeName?: SortOrder
+    variantId?: SortOrder
   }
   export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -4573,6 +4602,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: string | null
     themeName?: string
+    variantId?: string | null
     Purchasers?: UserCreateNestedManyWithoutPurchasedProjectsInput
   }
 
@@ -4587,6 +4617,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: string | null
     themeName?: string
+    variantId?: string | null
     Purchasers?: UserUncheckedCreateNestedManyWithoutPurchasedProjectsInput
   }
 
@@ -4611,6 +4642,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: string | null
     themeName?: string
+    variantId?: string | null
     User: UserCreateNestedOneWithoutProjectsInput
   }
 
@@ -4626,6 +4658,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: string | null
     themeName?: string
+    variantId?: string | null
   }
 
   export type ProjectCreateOrConnectWithoutPurchasersInput = {
@@ -4664,6 +4697,7 @@ export namespace Prisma {
     isSellable?: BoolFilter<"Project"> | boolean
     thumbnail?: StringNullableFilter<"Project"> | string | null
     themeName?: StringFilter<"Project"> | string
+    variantId?: StringNullableFilter<"Project"> | string | null
   }
 
   export type ProjectUpsertWithWhereUniqueWithoutPurchasersInput = {
@@ -4837,6 +4871,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: string | null
     themeName?: string
+    variantId?: string | null
   }
 
   export type ProjectUpdateWithoutUserInput = {
@@ -4850,6 +4885,7 @@ export namespace Prisma {
     isSellable?: BoolFieldUpdateOperationsInput | boolean
     thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     themeName?: StringFieldUpdateOperationsInput | string
+    variantId?: NullableStringFieldUpdateOperationsInput | string | null
     Purchasers?: UserUpdateManyWithoutPurchasedProjectsNestedInput
   }
 
@@ -4864,6 +4900,7 @@ export namespace Prisma {
     isSellable?: BoolFieldUpdateOperationsInput | boolean
     thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     themeName?: StringFieldUpdateOperationsInput | string
+    variantId?: NullableStringFieldUpdateOperationsInput | string | null
     Purchasers?: UserUncheckedUpdateManyWithoutPurchasedProjectsNestedInput
   }
 
@@ -4878,6 +4915,7 @@ export namespace Prisma {
     isSellable?: BoolFieldUpdateOperationsInput | boolean
     thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     themeName?: StringFieldUpdateOperationsInput | string
+    variantId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ProjectUpdateWithoutPurchasersInput = {
@@ -4891,6 +4929,7 @@ export namespace Prisma {
     isSellable?: BoolFieldUpdateOperationsInput | boolean
     thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     themeName?: StringFieldUpdateOperationsInput | string
+    variantId?: NullableStringFieldUpdateOperationsInput | string | null
     User?: UserUpdateOneRequiredWithoutProjectsNestedInput
   }
 
@@ -4906,6 +4945,7 @@ export namespace Prisma {
     isSellable?: BoolFieldUpdateOperationsInput | boolean
     thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     themeName?: StringFieldUpdateOperationsInput | string
+    variantId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ProjectUncheckedUpdateManyWithoutPurchasersInput = {
@@ -4920,6 +4960,7 @@ export namespace Prisma {
     isSellable?: BoolFieldUpdateOperationsInput | boolean
     thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     themeName?: StringFieldUpdateOperationsInput | string
+    variantId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUpdateWithoutPurchasedProjectsInput = {

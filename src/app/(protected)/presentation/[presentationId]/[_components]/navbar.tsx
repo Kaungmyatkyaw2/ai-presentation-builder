@@ -1,16 +1,20 @@
 "use client";
 
+import { updateProjectSellable } from "@/actions/project";
 import { Button } from "@/components/ui/button";
 import { useSlideStore } from "@/store/useSlideStore";
-import { Home, Play, Share } from "lucide-react";
+import { Home, Monitor, Play, Share } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 import PresentationMode from "./presentation-mode";
+import SellTemplate from "./sell-template";
 
 type Props = { presentationId: string };
 
 const Navbar = ({ presentationId }: Props) => {
+  const router = useRouter();
   const { currentTheme } = useSlideStore();
   const [isPresentationMode, setIsPresentationMode] = useState(false);
 
@@ -22,6 +26,8 @@ const Navbar = ({ presentationId }: Props) => {
       description: "The link has been copied successfully",
     });
   };
+
+ 
 
   return (
     <nav
@@ -57,7 +63,8 @@ const Navbar = ({ presentationId }: Props) => {
         >
           <Share className="w-4 h-4" />
         </Button>
-        {/* SellTemplate */}
+
+        <SellTemplate presentationId={presentationId}/>
 
         <Button
           variant={"default"}
@@ -67,6 +74,7 @@ const Navbar = ({ presentationId }: Props) => {
           <Play className="size-4" />
           <span className="hidden sm:inlinee">Present</span>
         </Button>
+       
       </div>
 
       {isPresentationMode && (

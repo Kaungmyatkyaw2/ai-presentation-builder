@@ -1,10 +1,10 @@
 "use server";
 
+import { Project } from "@/generated/prisma";
 import { client } from "@/lib/prisma";
 import { OutlineCard } from "@/lib/types";
 import { JsonValue } from "@prisma/client/runtime/library";
 import { onAuthenticateUser } from "./user";
-import { Project } from "@/generated/prisma";
 
 export const getAllProjects = async () => {
   try {
@@ -17,6 +17,34 @@ export const getAllProjects = async () => {
       where: {
         userId: checkUser.user.id,
         isDeleted: false,
+      },
+      orderBy: {
+        updatedAt: "desc",
+      },
+    });
+
+    if (projects.length == 0) {
+      return { status: 404, error: "No Projects Found" };
+    }
+
+    return { status: 200, data: projects };
+  } catch (error) {
+    console.log("Error: ", error);
+    return { status: 500, error: "Internal Server Error" };
+  }
+};
+
+export const getSellableProjects = async () => {
+  try {
+    const checkUser = await onAuthenticateUser();
+    if (checkUser.status != 200 || !checkUser.user) {
+      return { status: 403, error: "User Not Authenticated!" };
+    }
+
+    const projects = await client.project.findMany({
+      where: {
+        isDeleted: false,
+        isSellable: true,
       },
       orderBy: {
         updatedAt: "desc",
@@ -248,6 +276,36 @@ export const updateTheme = async (projectId: string, theme: string) => {
 
     if (!updatedProject) {
       return { status: 500, error: "Failed to update theme" };
+    }
+
+    return { status: 200, data: updatedProject };
+  } catch (error) {
+    console.log("Error: ", error);
+    return { status: 500, error: "Internal Server Error" };
+  }
+};
+
+export const updateProjectSellable = async (
+  projectId: string,
+  variantId: string
+) => {
+  try {
+    if (!projectId) {
+      return { status: 400, error: "Project ID is are required" };
+    }
+
+    const updatedProject = await client.project.update({
+      where: {
+        id: projectId,
+      },
+      data: {
+        isSellable: true,
+        variantId: variantId,
+      },
+    });
+
+    if (!updatedProject) {
+      return { status: 500, error: "Failed to update seallability" };
     }
 
     return { status: 200, data: updatedProject };
