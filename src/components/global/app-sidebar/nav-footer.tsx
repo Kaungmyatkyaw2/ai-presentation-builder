@@ -1,12 +1,12 @@
-import { buySubscription } from "@/actions/lemon-squeezy";
 import { Button } from "@/components/ui/button";
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { SignedIn, UserButton, useUser } from "@clerk/nextjs";
 import { User } from "@/generated/prisma/client";
+import { upgradeSubscription } from "@/lib/stripe";
+import { SignedIn, UserButton, useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -24,19 +24,13 @@ const NavFooter = ({ prsimaUser }: { prsimaUser: User }) => {
     setLoading(true);
 
     try {
-      const res = await buySubscription(prsimaUser.id);
-
-      if (res.status !== 200) {
-        throw new Error("Failed to upgrade subscription");
-      }
-
-      router.push(res.url);
+      await upgradeSubscription();
     } catch (error) {
       toast.error("Error", {
         description: "Something went wrong. Please try later.",
       });
-    }finally {
-        setLoading(false)
+    } finally {
+      setLoading(false);
     }
   };
   return (

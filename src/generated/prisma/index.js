@@ -192,12 +192,11 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": null
+        "value": "postgresql://divineAdmin:dv-password@localhost:5432/divine?schema=public"
       }
     }
   },
