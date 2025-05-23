@@ -26,6 +26,7 @@ model User {
   lemonSqueezyApiKey String?
   storeId            String?
   webhookSecret      String?
+  stripe_user_id     String?
 
   Projects          Project[] @relation("OwnedProjects")
   PurchasedProjects Project[] @relation("PurchasedProjects")
@@ -45,5 +46,5 @@ model Project {
   themeName  String   @default("light")
   User       User     @relation("OwnedProjects", fields: [userId], references: [id])
   Purchasers User[]   @relation("PurchasedProjects")
-  variantId  String? @default("")
+  salePrice  Int?
 }

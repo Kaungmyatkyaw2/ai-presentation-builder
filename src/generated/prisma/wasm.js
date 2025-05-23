@@ -131,7 +131,8 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt',
   lemonSqueezyApiKey: 'lemonSqueezyApiKey',
   storeId: 'storeId',
-  webhookSecret: 'webhookSecret'
+  webhookSecret: 'webhookSecret',
+  stripe_user_id: 'stripe_user_id'
 };
 
 exports.Prisma.ProjectScalarFieldEnum = {
@@ -146,7 +147,7 @@ exports.Prisma.ProjectScalarFieldEnum = {
   isSellable: 'isSellable',
   thumbnail: 'thumbnail',
   themeName: 'themeName',
-  variantId: 'variantId'
+  salePrice: 'salePrice'
 };
 
 exports.Prisma.SortOrder = {

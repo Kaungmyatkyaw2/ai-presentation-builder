@@ -1052,6 +1052,7 @@ export namespace Prisma {
     lemonSqueezyApiKey: string | null
     storeId: string | null
     webhookSecret: string | null
+    stripe_user_id: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1066,6 +1067,7 @@ export namespace Prisma {
     lemonSqueezyApiKey: string | null
     storeId: string | null
     webhookSecret: string | null
+    stripe_user_id: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1080,6 +1082,7 @@ export namespace Prisma {
     lemonSqueezyApiKey: number
     storeId: number
     webhookSecret: number
+    stripe_user_id: number
     _all: number
   }
 
@@ -1096,6 +1099,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: true
     storeId?: true
     webhookSecret?: true
+    stripe_user_id?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1110,6 +1114,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: true
     storeId?: true
     webhookSecret?: true
+    stripe_user_id?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1124,6 +1129,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: true
     storeId?: true
     webhookSecret?: true
+    stripe_user_id?: true
     _all?: true
   }
 
@@ -1211,6 +1217,7 @@ export namespace Prisma {
     lemonSqueezyApiKey: string | null
     storeId: string | null
     webhookSecret: string | null
+    stripe_user_id: string | null
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -1242,6 +1249,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: boolean
     storeId?: boolean
     webhookSecret?: boolean
+    stripe_user_id?: boolean
     Projects?: boolean | User$ProjectsArgs<ExtArgs>
     PurchasedProjects?: boolean | User$PurchasedProjectsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1259,6 +1267,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: boolean
     storeId?: boolean
     webhookSecret?: boolean
+    stripe_user_id?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1273,6 +1282,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: boolean
     storeId?: boolean
     webhookSecret?: boolean
+    stripe_user_id?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1287,9 +1297,10 @@ export namespace Prisma {
     lemonSqueezyApiKey?: boolean
     storeId?: boolean
     webhookSecret?: boolean
+    stripe_user_id?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "clerkId" | "name" | "email" | "profileImage" | "subscription" | "createdAt" | "updatedAt" | "lemonSqueezyApiKey" | "storeId" | "webhookSecret", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "clerkId" | "name" | "email" | "profileImage" | "subscription" | "createdAt" | "updatedAt" | "lemonSqueezyApiKey" | "storeId" | "webhookSecret" | "stripe_user_id", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Projects?: boolean | User$ProjectsArgs<ExtArgs>
     PurchasedProjects?: boolean | User$PurchasedProjectsArgs<ExtArgs>
@@ -1316,6 +1327,7 @@ export namespace Prisma {
       lemonSqueezyApiKey: string | null
       storeId: string | null
       webhookSecret: string | null
+      stripe_user_id: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1752,6 +1764,7 @@ export namespace Prisma {
     readonly lemonSqueezyApiKey: FieldRef<"User", 'String'>
     readonly storeId: FieldRef<"User", 'String'>
     readonly webhookSecret: FieldRef<"User", 'String'>
+    readonly stripe_user_id: FieldRef<"User", 'String'>
   }
     
 
@@ -2212,8 +2225,18 @@ export namespace Prisma {
 
   export type AggregateProject = {
     _count: ProjectCountAggregateOutputType | null
+    _avg: ProjectAvgAggregateOutputType | null
+    _sum: ProjectSumAggregateOutputType | null
     _min: ProjectMinAggregateOutputType | null
     _max: ProjectMaxAggregateOutputType | null
+  }
+
+  export type ProjectAvgAggregateOutputType = {
+    salePrice: number | null
+  }
+
+  export type ProjectSumAggregateOutputType = {
+    salePrice: number | null
   }
 
   export type ProjectMinAggregateOutputType = {
@@ -2226,7 +2249,7 @@ export namespace Prisma {
     isSellable: boolean | null
     thumbnail: string | null
     themeName: string | null
-    variantId: string | null
+    salePrice: number | null
   }
 
   export type ProjectMaxAggregateOutputType = {
@@ -2239,7 +2262,7 @@ export namespace Prisma {
     isSellable: boolean | null
     thumbnail: string | null
     themeName: string | null
-    variantId: string | null
+    salePrice: number | null
   }
 
   export type ProjectCountAggregateOutputType = {
@@ -2254,10 +2277,18 @@ export namespace Prisma {
     isSellable: number
     thumbnail: number
     themeName: number
-    variantId: number
+    salePrice: number
     _all: number
   }
 
+
+  export type ProjectAvgAggregateInputType = {
+    salePrice?: true
+  }
+
+  export type ProjectSumAggregateInputType = {
+    salePrice?: true
+  }
 
   export type ProjectMinAggregateInputType = {
     id?: true
@@ -2269,7 +2300,7 @@ export namespace Prisma {
     isSellable?: true
     thumbnail?: true
     themeName?: true
-    variantId?: true
+    salePrice?: true
   }
 
   export type ProjectMaxAggregateInputType = {
@@ -2282,7 +2313,7 @@ export namespace Prisma {
     isSellable?: true
     thumbnail?: true
     themeName?: true
-    variantId?: true
+    salePrice?: true
   }
 
   export type ProjectCountAggregateInputType = {
@@ -2297,7 +2328,7 @@ export namespace Prisma {
     isSellable?: true
     thumbnail?: true
     themeName?: true
-    variantId?: true
+    salePrice?: true
     _all?: true
   }
 
@@ -2339,6 +2370,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: ProjectAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ProjectSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: ProjectMinAggregateInputType
@@ -2369,6 +2412,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ProjectCountAggregateInputType | true
+    _avg?: ProjectAvgAggregateInputType
+    _sum?: ProjectSumAggregateInputType
     _min?: ProjectMinAggregateInputType
     _max?: ProjectMaxAggregateInputType
   }
@@ -2385,8 +2430,10 @@ export namespace Prisma {
     isSellable: boolean
     thumbnail: string | null
     themeName: string
-    variantId: string | null
+    salePrice: number | null
     _count: ProjectCountAggregateOutputType | null
+    _avg: ProjectAvgAggregateOutputType | null
+    _sum: ProjectSumAggregateOutputType | null
     _min: ProjectMinAggregateOutputType | null
     _max: ProjectMaxAggregateOutputType | null
   }
@@ -2417,7 +2464,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: boolean
     themeName?: boolean
-    variantId?: boolean
+    salePrice?: boolean
     User?: boolean | UserDefaultArgs<ExtArgs>
     Purchasers?: boolean | Project$PurchasersArgs<ExtArgs>
     _count?: boolean | ProjectCountOutputTypeDefaultArgs<ExtArgs>
@@ -2435,7 +2482,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: boolean
     themeName?: boolean
-    variantId?: boolean
+    salePrice?: boolean
     User?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["project"]>
 
@@ -2451,7 +2498,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: boolean
     themeName?: boolean
-    variantId?: boolean
+    salePrice?: boolean
     User?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["project"]>
 
@@ -2467,10 +2514,10 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: boolean
     themeName?: boolean
-    variantId?: boolean
+    salePrice?: boolean
   }
 
-  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "createdAt" | "updatedAt" | "slides" | "userId" | "outlines" | "isDeleted" | "isSellable" | "thumbnail" | "themeName" | "variantId", ExtArgs["result"]["project"]>
+  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "createdAt" | "updatedAt" | "slides" | "userId" | "outlines" | "isDeleted" | "isSellable" | "thumbnail" | "themeName" | "salePrice", ExtArgs["result"]["project"]>
   export type ProjectInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     User?: boolean | UserDefaultArgs<ExtArgs>
     Purchasers?: boolean | Project$PurchasersArgs<ExtArgs>
@@ -2501,7 +2548,7 @@ export namespace Prisma {
       isSellable: boolean
       thumbnail: string | null
       themeName: string
-      variantId: string | null
+      salePrice: number | null
     }, ExtArgs["result"]["project"]>
     composites: {}
   }
@@ -2938,7 +2985,7 @@ export namespace Prisma {
     readonly isSellable: FieldRef<"Project", 'Boolean'>
     readonly thumbnail: FieldRef<"Project", 'String'>
     readonly themeName: FieldRef<"Project", 'String'>
-    readonly variantId: FieldRef<"Project", 'String'>
+    readonly salePrice: FieldRef<"Project", 'Int'>
   }
     
 
@@ -3402,7 +3449,8 @@ export namespace Prisma {
     updatedAt: 'updatedAt',
     lemonSqueezyApiKey: 'lemonSqueezyApiKey',
     storeId: 'storeId',
-    webhookSecret: 'webhookSecret'
+    webhookSecret: 'webhookSecret',
+    stripe_user_id: 'stripe_user_id'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -3420,7 +3468,7 @@ export namespace Prisma {
     isSellable: 'isSellable',
     thumbnail: 'thumbnail',
     themeName: 'themeName',
-    variantId: 'variantId'
+    salePrice: 'salePrice'
   };
 
   export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
@@ -3533,6 +3581,20 @@ export namespace Prisma {
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
   /**
    * Deep Input Types
    */
@@ -3553,6 +3615,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: StringNullableFilter<"User"> | string | null
     storeId?: StringNullableFilter<"User"> | string | null
     webhookSecret?: StringNullableFilter<"User"> | string | null
+    stripe_user_id?: StringNullableFilter<"User"> | string | null
     Projects?: ProjectListRelationFilter
     PurchasedProjects?: ProjectListRelationFilter
   }
@@ -3569,6 +3632,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: SortOrderInput | SortOrder
     storeId?: SortOrderInput | SortOrder
     webhookSecret?: SortOrderInput | SortOrder
+    stripe_user_id?: SortOrderInput | SortOrder
     Projects?: ProjectOrderByRelationAggregateInput
     PurchasedProjects?: ProjectOrderByRelationAggregateInput
   }
@@ -3588,6 +3652,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: StringNullableFilter<"User"> | string | null
     storeId?: StringNullableFilter<"User"> | string | null
     webhookSecret?: StringNullableFilter<"User"> | string | null
+    stripe_user_id?: StringNullableFilter<"User"> | string | null
     Projects?: ProjectListRelationFilter
     PurchasedProjects?: ProjectListRelationFilter
   }, "id" | "clerkId" | "email">
@@ -3604,6 +3669,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: SortOrderInput | SortOrder
     storeId?: SortOrderInput | SortOrder
     webhookSecret?: SortOrderInput | SortOrder
+    stripe_user_id?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -3624,6 +3690,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: StringNullableWithAggregatesFilter<"User"> | string | null
     storeId?: StringNullableWithAggregatesFilter<"User"> | string | null
     webhookSecret?: StringNullableWithAggregatesFilter<"User"> | string | null
+    stripe_user_id?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
   export type ProjectWhereInput = {
@@ -3641,7 +3708,7 @@ export namespace Prisma {
     isSellable?: BoolFilter<"Project"> | boolean
     thumbnail?: StringNullableFilter<"Project"> | string | null
     themeName?: StringFilter<"Project"> | string
-    variantId?: StringNullableFilter<"Project"> | string | null
+    salePrice?: IntNullableFilter<"Project"> | number | null
     User?: XOR<UserScalarRelationFilter, UserWhereInput>
     Purchasers?: UserListRelationFilter
   }
@@ -3658,7 +3725,7 @@ export namespace Prisma {
     isSellable?: SortOrder
     thumbnail?: SortOrderInput | SortOrder
     themeName?: SortOrder
-    variantId?: SortOrderInput | SortOrder
+    salePrice?: SortOrderInput | SortOrder
     User?: UserOrderByWithRelationInput
     Purchasers?: UserOrderByRelationAggregateInput
   }
@@ -3678,7 +3745,7 @@ export namespace Prisma {
     isSellable?: BoolFilter<"Project"> | boolean
     thumbnail?: StringNullableFilter<"Project"> | string | null
     themeName?: StringFilter<"Project"> | string
-    variantId?: StringNullableFilter<"Project"> | string | null
+    salePrice?: IntNullableFilter<"Project"> | number | null
     User?: XOR<UserScalarRelationFilter, UserWhereInput>
     Purchasers?: UserListRelationFilter
   }, "id">
@@ -3695,10 +3762,12 @@ export namespace Prisma {
     isSellable?: SortOrder
     thumbnail?: SortOrderInput | SortOrder
     themeName?: SortOrder
-    variantId?: SortOrderInput | SortOrder
+    salePrice?: SortOrderInput | SortOrder
     _count?: ProjectCountOrderByAggregateInput
+    _avg?: ProjectAvgOrderByAggregateInput
     _max?: ProjectMaxOrderByAggregateInput
     _min?: ProjectMinOrderByAggregateInput
+    _sum?: ProjectSumOrderByAggregateInput
   }
 
   export type ProjectScalarWhereWithAggregatesInput = {
@@ -3716,7 +3785,7 @@ export namespace Prisma {
     isSellable?: BoolWithAggregatesFilter<"Project"> | boolean
     thumbnail?: StringNullableWithAggregatesFilter<"Project"> | string | null
     themeName?: StringWithAggregatesFilter<"Project"> | string
-    variantId?: StringNullableWithAggregatesFilter<"Project"> | string | null
+    salePrice?: IntNullableWithAggregatesFilter<"Project"> | number | null
   }
 
   export type UserCreateInput = {
@@ -3731,6 +3800,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: string | null
     storeId?: string | null
     webhookSecret?: string | null
+    stripe_user_id?: string | null
     Projects?: ProjectCreateNestedManyWithoutUserInput
     PurchasedProjects?: ProjectCreateNestedManyWithoutPurchasersInput
   }
@@ -3747,6 +3817,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: string | null
     storeId?: string | null
     webhookSecret?: string | null
+    stripe_user_id?: string | null
     Projects?: ProjectUncheckedCreateNestedManyWithoutUserInput
     PurchasedProjects?: ProjectUncheckedCreateNestedManyWithoutPurchasersInput
   }
@@ -3763,6 +3834,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: NullableStringFieldUpdateOperationsInput | string | null
     storeId?: NullableStringFieldUpdateOperationsInput | string | null
     webhookSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    stripe_user_id?: NullableStringFieldUpdateOperationsInput | string | null
     Projects?: ProjectUpdateManyWithoutUserNestedInput
     PurchasedProjects?: ProjectUpdateManyWithoutPurchasersNestedInput
   }
@@ -3779,6 +3851,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: NullableStringFieldUpdateOperationsInput | string | null
     storeId?: NullableStringFieldUpdateOperationsInput | string | null
     webhookSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    stripe_user_id?: NullableStringFieldUpdateOperationsInput | string | null
     Projects?: ProjectUncheckedUpdateManyWithoutUserNestedInput
     PurchasedProjects?: ProjectUncheckedUpdateManyWithoutPurchasersNestedInput
   }
@@ -3795,6 +3868,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: string | null
     storeId?: string | null
     webhookSecret?: string | null
+    stripe_user_id?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -3809,6 +3883,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: NullableStringFieldUpdateOperationsInput | string | null
     storeId?: NullableStringFieldUpdateOperationsInput | string | null
     webhookSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    stripe_user_id?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -3823,6 +3898,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: NullableStringFieldUpdateOperationsInput | string | null
     storeId?: NullableStringFieldUpdateOperationsInput | string | null
     webhookSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    stripe_user_id?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ProjectCreateInput = {
@@ -3836,7 +3912,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: string | null
     themeName?: string
-    variantId?: string | null
+    salePrice?: number | null
     User: UserCreateNestedOneWithoutProjectsInput
     Purchasers?: UserCreateNestedManyWithoutPurchasedProjectsInput
   }
@@ -3853,7 +3929,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: string | null
     themeName?: string
-    variantId?: string | null
+    salePrice?: number | null
     Purchasers?: UserUncheckedCreateNestedManyWithoutPurchasedProjectsInput
   }
 
@@ -3868,7 +3944,7 @@ export namespace Prisma {
     isSellable?: BoolFieldUpdateOperationsInput | boolean
     thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     themeName?: StringFieldUpdateOperationsInput | string
-    variantId?: NullableStringFieldUpdateOperationsInput | string | null
+    salePrice?: NullableIntFieldUpdateOperationsInput | number | null
     User?: UserUpdateOneRequiredWithoutProjectsNestedInput
     Purchasers?: UserUpdateManyWithoutPurchasedProjectsNestedInput
   }
@@ -3885,7 +3961,7 @@ export namespace Prisma {
     isSellable?: BoolFieldUpdateOperationsInput | boolean
     thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     themeName?: StringFieldUpdateOperationsInput | string
-    variantId?: NullableStringFieldUpdateOperationsInput | string | null
+    salePrice?: NullableIntFieldUpdateOperationsInput | number | null
     Purchasers?: UserUncheckedUpdateManyWithoutPurchasedProjectsNestedInput
   }
 
@@ -3901,7 +3977,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: string | null
     themeName?: string
-    variantId?: string | null
+    salePrice?: number | null
   }
 
   export type ProjectUpdateManyMutationInput = {
@@ -3915,7 +3991,7 @@ export namespace Prisma {
     isSellable?: BoolFieldUpdateOperationsInput | boolean
     thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     themeName?: StringFieldUpdateOperationsInput | string
-    variantId?: NullableStringFieldUpdateOperationsInput | string | null
+    salePrice?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ProjectUncheckedUpdateManyInput = {
@@ -3930,7 +4006,7 @@ export namespace Prisma {
     isSellable?: BoolFieldUpdateOperationsInput | boolean
     thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     themeName?: StringFieldUpdateOperationsInput | string
-    variantId?: NullableStringFieldUpdateOperationsInput | string | null
+    salePrice?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type UuidFilter<$PrismaModel = never> = {
@@ -4018,6 +4094,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: SortOrder
     storeId?: SortOrder
     webhookSecret?: SortOrder
+    stripe_user_id?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -4032,6 +4109,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: SortOrder
     storeId?: SortOrder
     webhookSecret?: SortOrder
+    stripe_user_id?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -4046,6 +4124,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: SortOrder
     storeId?: SortOrder
     webhookSecret?: SortOrder
+    stripe_user_id?: SortOrder
   }
 
   export type UuidWithAggregatesFilter<$PrismaModel = never> = {
@@ -4157,6 +4236,17 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -4184,7 +4274,11 @@ export namespace Prisma {
     isSellable?: SortOrder
     thumbnail?: SortOrder
     themeName?: SortOrder
-    variantId?: SortOrder
+    salePrice?: SortOrder
+  }
+
+  export type ProjectAvgOrderByAggregateInput = {
+    salePrice?: SortOrder
   }
 
   export type ProjectMaxOrderByAggregateInput = {
@@ -4197,7 +4291,7 @@ export namespace Prisma {
     isSellable?: SortOrder
     thumbnail?: SortOrder
     themeName?: SortOrder
-    variantId?: SortOrder
+    salePrice?: SortOrder
   }
 
   export type ProjectMinOrderByAggregateInput = {
@@ -4210,7 +4304,11 @@ export namespace Prisma {
     isSellable?: SortOrder
     thumbnail?: SortOrder
     themeName?: SortOrder
-    variantId?: SortOrder
+    salePrice?: SortOrder
+  }
+
+  export type ProjectSumOrderByAggregateInput = {
+    salePrice?: SortOrder
   }
   export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -4245,6 +4343,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type ProjectCreateNestedManyWithoutUserInput = {
@@ -4372,6 +4486,14 @@ export namespace Prisma {
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type UserUpdateOneRequiredWithoutProjectsNestedInput = {
@@ -4591,6 +4713,33 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type ProjectCreateWithoutUserInput = {
     id?: string
     title: string
@@ -4602,7 +4751,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: string | null
     themeName?: string
-    variantId?: string | null
+    salePrice?: number | null
     Purchasers?: UserCreateNestedManyWithoutPurchasedProjectsInput
   }
 
@@ -4617,7 +4766,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: string | null
     themeName?: string
-    variantId?: string | null
+    salePrice?: number | null
     Purchasers?: UserUncheckedCreateNestedManyWithoutPurchasedProjectsInput
   }
 
@@ -4642,7 +4791,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: string | null
     themeName?: string
-    variantId?: string | null
+    salePrice?: number | null
     User: UserCreateNestedOneWithoutProjectsInput
   }
 
@@ -4658,7 +4807,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: string | null
     themeName?: string
-    variantId?: string | null
+    salePrice?: number | null
   }
 
   export type ProjectCreateOrConnectWithoutPurchasersInput = {
@@ -4697,7 +4846,7 @@ export namespace Prisma {
     isSellable?: BoolFilter<"Project"> | boolean
     thumbnail?: StringNullableFilter<"Project"> | string | null
     themeName?: StringFilter<"Project"> | string
-    variantId?: StringNullableFilter<"Project"> | string | null
+    salePrice?: IntNullableFilter<"Project"> | number | null
   }
 
   export type ProjectUpsertWithWhereUniqueWithoutPurchasersInput = {
@@ -4728,6 +4877,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: string | null
     storeId?: string | null
     webhookSecret?: string | null
+    stripe_user_id?: string | null
     PurchasedProjects?: ProjectCreateNestedManyWithoutPurchasersInput
   }
 
@@ -4743,6 +4893,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: string | null
     storeId?: string | null
     webhookSecret?: string | null
+    stripe_user_id?: string | null
     PurchasedProjects?: ProjectUncheckedCreateNestedManyWithoutPurchasersInput
   }
 
@@ -4763,6 +4914,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: string | null
     storeId?: string | null
     webhookSecret?: string | null
+    stripe_user_id?: string | null
     Projects?: ProjectCreateNestedManyWithoutUserInput
   }
 
@@ -4778,6 +4930,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: string | null
     storeId?: string | null
     webhookSecret?: string | null
+    stripe_user_id?: string | null
     Projects?: ProjectUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -4809,6 +4962,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: NullableStringFieldUpdateOperationsInput | string | null
     storeId?: NullableStringFieldUpdateOperationsInput | string | null
     webhookSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    stripe_user_id?: NullableStringFieldUpdateOperationsInput | string | null
     PurchasedProjects?: ProjectUpdateManyWithoutPurchasersNestedInput
   }
 
@@ -4824,6 +4978,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: NullableStringFieldUpdateOperationsInput | string | null
     storeId?: NullableStringFieldUpdateOperationsInput | string | null
     webhookSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    stripe_user_id?: NullableStringFieldUpdateOperationsInput | string | null
     PurchasedProjects?: ProjectUncheckedUpdateManyWithoutPurchasersNestedInput
   }
 
@@ -4858,6 +5013,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: StringNullableFilter<"User"> | string | null
     storeId?: StringNullableFilter<"User"> | string | null
     webhookSecret?: StringNullableFilter<"User"> | string | null
+    stripe_user_id?: StringNullableFilter<"User"> | string | null
   }
 
   export type ProjectCreateManyUserInput = {
@@ -4871,7 +5027,7 @@ export namespace Prisma {
     isSellable?: boolean
     thumbnail?: string | null
     themeName?: string
-    variantId?: string | null
+    salePrice?: number | null
   }
 
   export type ProjectUpdateWithoutUserInput = {
@@ -4885,7 +5041,7 @@ export namespace Prisma {
     isSellable?: BoolFieldUpdateOperationsInput | boolean
     thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     themeName?: StringFieldUpdateOperationsInput | string
-    variantId?: NullableStringFieldUpdateOperationsInput | string | null
+    salePrice?: NullableIntFieldUpdateOperationsInput | number | null
     Purchasers?: UserUpdateManyWithoutPurchasedProjectsNestedInput
   }
 
@@ -4900,7 +5056,7 @@ export namespace Prisma {
     isSellable?: BoolFieldUpdateOperationsInput | boolean
     thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     themeName?: StringFieldUpdateOperationsInput | string
-    variantId?: NullableStringFieldUpdateOperationsInput | string | null
+    salePrice?: NullableIntFieldUpdateOperationsInput | number | null
     Purchasers?: UserUncheckedUpdateManyWithoutPurchasedProjectsNestedInput
   }
 
@@ -4915,7 +5071,7 @@ export namespace Prisma {
     isSellable?: BoolFieldUpdateOperationsInput | boolean
     thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     themeName?: StringFieldUpdateOperationsInput | string
-    variantId?: NullableStringFieldUpdateOperationsInput | string | null
+    salePrice?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ProjectUpdateWithoutPurchasersInput = {
@@ -4929,7 +5085,7 @@ export namespace Prisma {
     isSellable?: BoolFieldUpdateOperationsInput | boolean
     thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     themeName?: StringFieldUpdateOperationsInput | string
-    variantId?: NullableStringFieldUpdateOperationsInput | string | null
+    salePrice?: NullableIntFieldUpdateOperationsInput | number | null
     User?: UserUpdateOneRequiredWithoutProjectsNestedInput
   }
 
@@ -4945,7 +5101,7 @@ export namespace Prisma {
     isSellable?: BoolFieldUpdateOperationsInput | boolean
     thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     themeName?: StringFieldUpdateOperationsInput | string
-    variantId?: NullableStringFieldUpdateOperationsInput | string | null
+    salePrice?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ProjectUncheckedUpdateManyWithoutPurchasersInput = {
@@ -4960,7 +5116,7 @@ export namespace Prisma {
     isSellable?: BoolFieldUpdateOperationsInput | boolean
     thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     themeName?: StringFieldUpdateOperationsInput | string
-    variantId?: NullableStringFieldUpdateOperationsInput | string | null
+    salePrice?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type UserUpdateWithoutPurchasedProjectsInput = {
@@ -4975,6 +5131,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: NullableStringFieldUpdateOperationsInput | string | null
     storeId?: NullableStringFieldUpdateOperationsInput | string | null
     webhookSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    stripe_user_id?: NullableStringFieldUpdateOperationsInput | string | null
     Projects?: ProjectUpdateManyWithoutUserNestedInput
   }
 
@@ -4990,6 +5147,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: NullableStringFieldUpdateOperationsInput | string | null
     storeId?: NullableStringFieldUpdateOperationsInput | string | null
     webhookSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    stripe_user_id?: NullableStringFieldUpdateOperationsInput | string | null
     Projects?: ProjectUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -5005,6 +5163,7 @@ export namespace Prisma {
     lemonSqueezyApiKey?: NullableStringFieldUpdateOperationsInput | string | null
     storeId?: NullableStringFieldUpdateOperationsInput | string | null
     webhookSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    stripe_user_id?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

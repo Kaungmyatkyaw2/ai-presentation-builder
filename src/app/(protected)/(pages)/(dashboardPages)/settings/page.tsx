@@ -1,6 +1,5 @@
-import { onAuthenticateUser } from '@/actions/user'
-import ApiKeyInput from './_components/lemmon-sequeezy-credentials'
-import LemonSqueezyCredentials from './_components/lemmon-sequeezy-credentials';
+import { onAuthenticateUser } from '@/actions/user';
+import StripeConnectButton from './_components/stripe-connect-button';
 
 const SettingsPage = async () => {
   const checkUser = await onAuthenticateUser();
@@ -18,7 +17,8 @@ const SettingsPage = async () => {
           </p>
         </div>
       </div>
-      <LemonSqueezyCredentials user={checkUser.user!} />
+      <StripeConnectButton/>
+      {/* <LemonSqueezyCredentials user={checkUser.user!} /> */}
     </div>
   );
 };

@@ -2,9 +2,9 @@ import { updateProjectSellable } from "@/actions/project";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
 } from "@/components/ui/popover";
 import { useSlideStore } from "@/store/useSlideStore";
 import { Monitor } from "lucide-react";
@@ -15,25 +15,29 @@ import { toast } from "sonner";
 const SellTemplate = ({ presentationId }: { presentationId: string }) => {
   const { currentTheme } = useSlideStore();
   const router = useRouter();
-  const [variantId, setVariantId] = useState("");
+  const [salePrice, setSalePrice] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
 
   const handlePublish = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    if (!variantId.length) {
+    e.preventDefault();
+    if (!salePrice) {
       return toast.error("Error", {
-        description: "Variant id is required.",
+        description: "Sale price is required.",
       });
     }
 
     try {
-        setIsLoading(true)
-      const res = await updateProjectSellable(presentationId, variantId);
+      setIsLoading(true);
+
+      const res = await updateProjectSellable(
+        presentationId,
+        Number.parseInt(salePrice)
+      );
 
       if (res.status != 200) {
         toast.error("Error", {
-          description: "Failed to set sellable for the project.",
+          description: res.error || "Failed to set sellable for the project.",
         });
         return;
       }
@@ -41,7 +45,7 @@ const SellTemplate = ({ presentationId }: { presentationId: string }) => {
       toast.success("Success", {
         description: "Successfully set the project to sell.",
       });
-      setVariantId("");
+      setSalePrice("");
 
       router.refresh();
     } catch (error) {
@@ -70,13 +74,18 @@ const SellTemplate = ({ presentationId }: { presentationId: string }) => {
           <h1 className="text-xl font-bold">Sell your template</h1>
           <form onSubmit={handlePublish} className="w-full space-y-2 mt-3">
             <Input
-              placeholder="Variant Id..."
-              value={variantId}
-              onChange={(e) => setVariantId(e.target.value)}
+              placeholder="Template price.."
+              value={salePrice}
+              type="number"
+              onChange={(e) => setSalePrice(e.target.value)}
               disabled={isLoading}
               required
             />
-            <Button type="submit" className="w-full cusror-pointer" disabled={isLoading}>
+            <Button
+              type="submit"
+              className="w-full cusror-pointer"
+              disabled={isLoading}
+            >
               {isLoading ? "Publishing...." : "Publish"}
             </Button>
           </form>

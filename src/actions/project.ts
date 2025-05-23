@@ -287,11 +287,24 @@ export const updateTheme = async (projectId: string, theme: string) => {
 
 export const updateProjectSellable = async (
   projectId: string,
-  variantId: string
+  salePrice: number
 ) => {
   try {
     if (!projectId) {
       return { status: 400, error: "Project ID is are required" };
+    }
+
+    const checkUser = await onAuthenticateUser();
+
+    if (checkUser.status != 200 || !checkUser.user) {
+      return { status: 403, error: "User Not Authenticated!" };
+    }
+
+    if (!checkUser.user.stripe_user_id) {
+      return {
+        status: 400,
+        error: "Please connect your stripe account first!",
+      };
     }
 
     const updatedProject = await client.project.update({
@@ -300,7 +313,7 @@ export const updateProjectSellable = async (
       },
       data: {
         isSellable: true,
-        variantId: variantId,
+        salePrice,
       },
     });
 
