@@ -1,7 +1,9 @@
 "use client";
 
 import { deleteProject, recoverProject } from "@/actions/project";
+import { buyTemplate } from "@/actions/stripe";
 import { Button } from "@/components/ui/button";
+import { Project } from "@/generated/prisma";
 import { itemVariants, themes } from "@/lib/constants";
 import { timeAgo } from "@/lib/utils";
 import { useSlideStore } from "@/store/useSlideStore";
@@ -22,6 +24,7 @@ type Props = {
   slideData: JsonValue;
   themeName: string;
   forSold?: boolean;
+  project: Project;
 };
 
 const ProjectCard = ({
@@ -31,13 +34,13 @@ const ProjectCard = ({
   themeName,
   isDeleted,
   slideData,
-  isSellable,
   forSold,
+  project,
 }: Props) => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const router = useRouter();
-  const { setSlides, project } = useSlideStore();
+  const { setSlides } = useSlideStore();
 
   const handleNavigation = () => {
     setSlides(JSON.parse(JSON.stringify(slideData)));
@@ -104,6 +107,20 @@ const ProjectCard = ({
     }
   };
 
+  const handleBuyTemplate = async () => {
+    const res = await buyTemplate(project!);
+    if (res.status !== 200) {
+      toast.error("Error", {
+        description: res.error || "Something went wrong",
+      });
+      return;
+    }
+
+    if (res.url) {
+      router.replace(res.url);
+    }
+  };
+
   return (
     <motion.div
       className={`group w-full flex flex-col gap-y-3 rounded-xl p-3 transition-colors ${
@@ -122,8 +139,8 @@ const ProjectCard = ({
       </div>
       <div className="w-full">
         <div className="space-y-1">
-          <h3 className="font-semibold text-base text-white/90 line-clamp-1">
-            {title} This is the title
+          <h3 className="font-semibold text-base dark:text-white/90 text-black/90 line-clamp-1">
+            {title}
           </h3>
           <div className="flex w-full justify-between items-center gap-2">
             <p
@@ -138,6 +155,7 @@ const ProjectCard = ({
                 variant={"ghost"}
                 className="bg-muted dark:bg-muted"
                 disabled={loading}
+                onClick={handleBuyTemplate}
               >
                 Buy
               </Button>

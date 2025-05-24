@@ -20,6 +20,7 @@ const Projects = ({ projects, forSold }: Props) => {
     >
       {projects.map((project) => (
         <ProjectCard
+        project={project}
           key={project.id}
           projectId={project?.id}
           title={project?.title}
