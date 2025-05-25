@@ -44,8 +44,6 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  console.log({ userId });
-
   const updatedUser = await client.user.update({
     where: {
       id: userId,

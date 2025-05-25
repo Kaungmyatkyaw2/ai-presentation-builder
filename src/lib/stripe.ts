@@ -20,9 +20,11 @@ export const upgradeSubscription = async () => {
       sessionId: data.result.id,
     });
     if (result.error) {
-      console.error(result.error);
+      return { status: 400, error: "Something went wrong" };
     }
+
+    return { status: 200 };
   } catch (error) {
-    console.log(error);
+    return { status: 500, error: "something went wrong" };
   }
 };

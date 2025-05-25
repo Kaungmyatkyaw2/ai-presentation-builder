@@ -2,7 +2,7 @@ import { JsonValue } from "@/generated/prisma/runtime/library";
 import { client } from "@/lib/prisma";
 import { headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-import stripe from "stripe";
+import stripe, { Stripe } from "stripe";
 
 type METADATA = {
   userId: string;
@@ -28,12 +28,15 @@ export async function POST(req: NextRequest) {
 
     if (session.mode === "subscription") {
       const metadata = session.metadata as METADATA;
+      const customerId = session.customer as string;
+
       const buyer = await client.user.update({
         where: {
           id: metadata.userId,
         },
         data: {
           subscription: true,
+          stripeCustomerId: customerId,
         },
       });
 
@@ -51,7 +54,6 @@ export async function POST(req: NextRequest) {
 
     if (session.mode === "payment") {
       const projectId = (session.metadata as any).projectId as string;
-      const sellerId = (session.metadata as any).sellerId as string;
       const buyerId = (session.metadata as any).buyerId as string;
 
       const project = await client.project.findUnique({
@@ -95,6 +97,44 @@ export async function POST(req: NextRequest) {
         status: 200,
       });
     }
+  } else if (eventType === "customer.subscription.deleted") {
+    const subscription = event.data.object as Stripe.Subscription;
+    const customerId = subscription.customer as string;
+
+    const customer = await client.user.findFirst({
+      where: {
+        stripeCustomerId: customerId,
+      },
+    });
+
+    if (!customer) {
+      return NextResponse.json({
+        message: "Customer Id matched not found!",
+        status: 404,
+      });
+    }
+
+    const updatedCustomer = await client.user.update({
+      where: {
+        stripeCustomerId: customerId,
+      },
+      data: {
+        subscription: false,
+        stripeCustomerId: null,
+      },
+    });
+
+    if (!updatedCustomer) {
+      return NextResponse.json({
+        message: "Failed to updated the customer!",
+        status: 400,
+      });
+    }
+
+    return NextResponse.json({
+      status: 200,
+      data: updatedCustomer,
+    });
   }
 
   return new Response("", { status: 200 });

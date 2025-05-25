@@ -129,10 +129,8 @@ exports.Prisma.UserScalarFieldEnum = {
   subscription: 'subscription',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  lemonSqueezyApiKey: 'lemonSqueezyApiKey',
-  storeId: 'storeId',
-  webhookSecret: 'webhookSecret',
-  stripe_user_id: 'stripe_user_id'
+  stripe_user_id: 'stripe_user_id',
+  stripeCustomerId: 'stripeCustomerId'
 };
 
 exports.Prisma.ProjectScalarFieldEnum = {

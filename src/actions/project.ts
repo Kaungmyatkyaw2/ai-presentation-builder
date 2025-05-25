@@ -45,6 +45,11 @@ export const getSellableProjects = async () => {
       where: {
         isDeleted: false,
         isSellable: true,
+        Purchasers: {
+          some: {
+            NOT: checkUser.user,
+          },
+        },
       },
       orderBy: {
         updatedAt: "desc",

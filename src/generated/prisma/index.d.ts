@@ -1049,10 +1049,8 @@ export namespace Prisma {
     subscription: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
-    lemonSqueezyApiKey: string | null
-    storeId: string | null
-    webhookSecret: string | null
     stripe_user_id: string | null
+    stripeCustomerId: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1064,10 +1062,8 @@ export namespace Prisma {
     subscription: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
-    lemonSqueezyApiKey: string | null
-    storeId: string | null
-    webhookSecret: string | null
     stripe_user_id: string | null
+    stripeCustomerId: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1079,10 +1075,8 @@ export namespace Prisma {
     subscription: number
     createdAt: number
     updatedAt: number
-    lemonSqueezyApiKey: number
-    storeId: number
-    webhookSecret: number
     stripe_user_id: number
+    stripeCustomerId: number
     _all: number
   }
 
@@ -1096,10 +1090,8 @@ export namespace Prisma {
     subscription?: true
     createdAt?: true
     updatedAt?: true
-    lemonSqueezyApiKey?: true
-    storeId?: true
-    webhookSecret?: true
     stripe_user_id?: true
+    stripeCustomerId?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1111,10 +1103,8 @@ export namespace Prisma {
     subscription?: true
     createdAt?: true
     updatedAt?: true
-    lemonSqueezyApiKey?: true
-    storeId?: true
-    webhookSecret?: true
     stripe_user_id?: true
+    stripeCustomerId?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1126,10 +1116,8 @@ export namespace Prisma {
     subscription?: true
     createdAt?: true
     updatedAt?: true
-    lemonSqueezyApiKey?: true
-    storeId?: true
-    webhookSecret?: true
     stripe_user_id?: true
+    stripeCustomerId?: true
     _all?: true
   }
 
@@ -1214,10 +1202,8 @@ export namespace Prisma {
     subscription: boolean | null
     createdAt: Date
     updatedAt: Date
-    lemonSqueezyApiKey: string | null
-    storeId: string | null
-    webhookSecret: string | null
     stripe_user_id: string | null
+    stripeCustomerId: string | null
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -1246,10 +1232,8 @@ export namespace Prisma {
     subscription?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    lemonSqueezyApiKey?: boolean
-    storeId?: boolean
-    webhookSecret?: boolean
     stripe_user_id?: boolean
+    stripeCustomerId?: boolean
     Projects?: boolean | User$ProjectsArgs<ExtArgs>
     PurchasedProjects?: boolean | User$PurchasedProjectsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1264,10 +1248,8 @@ export namespace Prisma {
     subscription?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    lemonSqueezyApiKey?: boolean
-    storeId?: boolean
-    webhookSecret?: boolean
     stripe_user_id?: boolean
+    stripeCustomerId?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1279,10 +1261,8 @@ export namespace Prisma {
     subscription?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    lemonSqueezyApiKey?: boolean
-    storeId?: boolean
-    webhookSecret?: boolean
     stripe_user_id?: boolean
+    stripeCustomerId?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1294,13 +1274,11 @@ export namespace Prisma {
     subscription?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    lemonSqueezyApiKey?: boolean
-    storeId?: boolean
-    webhookSecret?: boolean
     stripe_user_id?: boolean
+    stripeCustomerId?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "clerkId" | "name" | "email" | "profileImage" | "subscription" | "createdAt" | "updatedAt" | "lemonSqueezyApiKey" | "storeId" | "webhookSecret" | "stripe_user_id", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "clerkId" | "name" | "email" | "profileImage" | "subscription" | "createdAt" | "updatedAt" | "stripe_user_id" | "stripeCustomerId", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Projects?: boolean | User$ProjectsArgs<ExtArgs>
     PurchasedProjects?: boolean | User$PurchasedProjectsArgs<ExtArgs>
@@ -1324,10 +1302,8 @@ export namespace Prisma {
       subscription: boolean | null
       createdAt: Date
       updatedAt: Date
-      lemonSqueezyApiKey: string | null
-      storeId: string | null
-      webhookSecret: string | null
       stripe_user_id: string | null
+      stripeCustomerId: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1761,10 +1737,8 @@ export namespace Prisma {
     readonly subscription: FieldRef<"User", 'Boolean'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
-    readonly lemonSqueezyApiKey: FieldRef<"User", 'String'>
-    readonly storeId: FieldRef<"User", 'String'>
-    readonly webhookSecret: FieldRef<"User", 'String'>
     readonly stripe_user_id: FieldRef<"User", 'String'>
+    readonly stripeCustomerId: FieldRef<"User", 'String'>
   }
     
 
@@ -3447,10 +3421,8 @@ export namespace Prisma {
     subscription: 'subscription',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    lemonSqueezyApiKey: 'lemonSqueezyApiKey',
-    storeId: 'storeId',
-    webhookSecret: 'webhookSecret',
-    stripe_user_id: 'stripe_user_id'
+    stripe_user_id: 'stripe_user_id',
+    stripeCustomerId: 'stripeCustomerId'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -3612,10 +3584,8 @@ export namespace Prisma {
     subscription?: BoolNullableFilter<"User"> | boolean | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    lemonSqueezyApiKey?: StringNullableFilter<"User"> | string | null
-    storeId?: StringNullableFilter<"User"> | string | null
-    webhookSecret?: StringNullableFilter<"User"> | string | null
     stripe_user_id?: StringNullableFilter<"User"> | string | null
+    stripeCustomerId?: StringNullableFilter<"User"> | string | null
     Projects?: ProjectListRelationFilter
     PurchasedProjects?: ProjectListRelationFilter
   }
@@ -3629,10 +3599,8 @@ export namespace Prisma {
     subscription?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    lemonSqueezyApiKey?: SortOrderInput | SortOrder
-    storeId?: SortOrderInput | SortOrder
-    webhookSecret?: SortOrderInput | SortOrder
     stripe_user_id?: SortOrderInput | SortOrder
+    stripeCustomerId?: SortOrderInput | SortOrder
     Projects?: ProjectOrderByRelationAggregateInput
     PurchasedProjects?: ProjectOrderByRelationAggregateInput
   }
@@ -3641,6 +3609,7 @@ export namespace Prisma {
     id?: string
     clerkId?: string
     email?: string
+    stripeCustomerId?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
@@ -3649,13 +3618,10 @@ export namespace Prisma {
     subscription?: BoolNullableFilter<"User"> | boolean | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    lemonSqueezyApiKey?: StringNullableFilter<"User"> | string | null
-    storeId?: StringNullableFilter<"User"> | string | null
-    webhookSecret?: StringNullableFilter<"User"> | string | null
     stripe_user_id?: StringNullableFilter<"User"> | string | null
     Projects?: ProjectListRelationFilter
     PurchasedProjects?: ProjectListRelationFilter
-  }, "id" | "clerkId" | "email">
+  }, "id" | "clerkId" | "email" | "stripeCustomerId">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
@@ -3666,10 +3632,8 @@ export namespace Prisma {
     subscription?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    lemonSqueezyApiKey?: SortOrderInput | SortOrder
-    storeId?: SortOrderInput | SortOrder
-    webhookSecret?: SortOrderInput | SortOrder
     stripe_user_id?: SortOrderInput | SortOrder
+    stripeCustomerId?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -3687,10 +3651,8 @@ export namespace Prisma {
     subscription?: BoolNullableWithAggregatesFilter<"User"> | boolean | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
-    lemonSqueezyApiKey?: StringNullableWithAggregatesFilter<"User"> | string | null
-    storeId?: StringNullableWithAggregatesFilter<"User"> | string | null
-    webhookSecret?: StringNullableWithAggregatesFilter<"User"> | string | null
     stripe_user_id?: StringNullableWithAggregatesFilter<"User"> | string | null
+    stripeCustomerId?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
   export type ProjectWhereInput = {
@@ -3797,10 +3759,8 @@ export namespace Prisma {
     subscription?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    lemonSqueezyApiKey?: string | null
-    storeId?: string | null
-    webhookSecret?: string | null
     stripe_user_id?: string | null
+    stripeCustomerId?: string | null
     Projects?: ProjectCreateNestedManyWithoutUserInput
     PurchasedProjects?: ProjectCreateNestedManyWithoutPurchasersInput
   }
@@ -3814,10 +3774,8 @@ export namespace Prisma {
     subscription?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    lemonSqueezyApiKey?: string | null
-    storeId?: string | null
-    webhookSecret?: string | null
     stripe_user_id?: string | null
+    stripeCustomerId?: string | null
     Projects?: ProjectUncheckedCreateNestedManyWithoutUserInput
     PurchasedProjects?: ProjectUncheckedCreateNestedManyWithoutPurchasersInput
   }
@@ -3831,10 +3789,8 @@ export namespace Prisma {
     subscription?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    lemonSqueezyApiKey?: NullableStringFieldUpdateOperationsInput | string | null
-    storeId?: NullableStringFieldUpdateOperationsInput | string | null
-    webhookSecret?: NullableStringFieldUpdateOperationsInput | string | null
     stripe_user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     Projects?: ProjectUpdateManyWithoutUserNestedInput
     PurchasedProjects?: ProjectUpdateManyWithoutPurchasersNestedInput
   }
@@ -3848,10 +3804,8 @@ export namespace Prisma {
     subscription?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    lemonSqueezyApiKey?: NullableStringFieldUpdateOperationsInput | string | null
-    storeId?: NullableStringFieldUpdateOperationsInput | string | null
-    webhookSecret?: NullableStringFieldUpdateOperationsInput | string | null
     stripe_user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     Projects?: ProjectUncheckedUpdateManyWithoutUserNestedInput
     PurchasedProjects?: ProjectUncheckedUpdateManyWithoutPurchasersNestedInput
   }
@@ -3865,10 +3819,8 @@ export namespace Prisma {
     subscription?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    lemonSqueezyApiKey?: string | null
-    storeId?: string | null
-    webhookSecret?: string | null
     stripe_user_id?: string | null
+    stripeCustomerId?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -3880,10 +3832,8 @@ export namespace Prisma {
     subscription?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    lemonSqueezyApiKey?: NullableStringFieldUpdateOperationsInput | string | null
-    storeId?: NullableStringFieldUpdateOperationsInput | string | null
-    webhookSecret?: NullableStringFieldUpdateOperationsInput | string | null
     stripe_user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -3895,10 +3845,8 @@ export namespace Prisma {
     subscription?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    lemonSqueezyApiKey?: NullableStringFieldUpdateOperationsInput | string | null
-    storeId?: NullableStringFieldUpdateOperationsInput | string | null
-    webhookSecret?: NullableStringFieldUpdateOperationsInput | string | null
     stripe_user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ProjectCreateInput = {
@@ -4091,10 +4039,8 @@ export namespace Prisma {
     subscription?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    lemonSqueezyApiKey?: SortOrder
-    storeId?: SortOrder
-    webhookSecret?: SortOrder
     stripe_user_id?: SortOrder
+    stripeCustomerId?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -4106,10 +4052,8 @@ export namespace Prisma {
     subscription?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    lemonSqueezyApiKey?: SortOrder
-    storeId?: SortOrder
-    webhookSecret?: SortOrder
     stripe_user_id?: SortOrder
+    stripeCustomerId?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -4121,10 +4065,8 @@ export namespace Prisma {
     subscription?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    lemonSqueezyApiKey?: SortOrder
-    storeId?: SortOrder
-    webhookSecret?: SortOrder
     stripe_user_id?: SortOrder
+    stripeCustomerId?: SortOrder
   }
 
   export type UuidWithAggregatesFilter<$PrismaModel = never> = {
@@ -4874,10 +4816,8 @@ export namespace Prisma {
     subscription?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    lemonSqueezyApiKey?: string | null
-    storeId?: string | null
-    webhookSecret?: string | null
     stripe_user_id?: string | null
+    stripeCustomerId?: string | null
     PurchasedProjects?: ProjectCreateNestedManyWithoutPurchasersInput
   }
 
@@ -4890,10 +4830,8 @@ export namespace Prisma {
     subscription?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    lemonSqueezyApiKey?: string | null
-    storeId?: string | null
-    webhookSecret?: string | null
     stripe_user_id?: string | null
+    stripeCustomerId?: string | null
     PurchasedProjects?: ProjectUncheckedCreateNestedManyWithoutPurchasersInput
   }
 
@@ -4911,10 +4849,8 @@ export namespace Prisma {
     subscription?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    lemonSqueezyApiKey?: string | null
-    storeId?: string | null
-    webhookSecret?: string | null
     stripe_user_id?: string | null
+    stripeCustomerId?: string | null
     Projects?: ProjectCreateNestedManyWithoutUserInput
   }
 
@@ -4927,10 +4863,8 @@ export namespace Prisma {
     subscription?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    lemonSqueezyApiKey?: string | null
-    storeId?: string | null
-    webhookSecret?: string | null
     stripe_user_id?: string | null
+    stripeCustomerId?: string | null
     Projects?: ProjectUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -4959,10 +4893,8 @@ export namespace Prisma {
     subscription?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    lemonSqueezyApiKey?: NullableStringFieldUpdateOperationsInput | string | null
-    storeId?: NullableStringFieldUpdateOperationsInput | string | null
-    webhookSecret?: NullableStringFieldUpdateOperationsInput | string | null
     stripe_user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     PurchasedProjects?: ProjectUpdateManyWithoutPurchasersNestedInput
   }
 
@@ -4975,10 +4907,8 @@ export namespace Prisma {
     subscription?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    lemonSqueezyApiKey?: NullableStringFieldUpdateOperationsInput | string | null
-    storeId?: NullableStringFieldUpdateOperationsInput | string | null
-    webhookSecret?: NullableStringFieldUpdateOperationsInput | string | null
     stripe_user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     PurchasedProjects?: ProjectUncheckedUpdateManyWithoutPurchasersNestedInput
   }
 
@@ -5010,10 +4940,8 @@ export namespace Prisma {
     subscription?: BoolNullableFilter<"User"> | boolean | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    lemonSqueezyApiKey?: StringNullableFilter<"User"> | string | null
-    storeId?: StringNullableFilter<"User"> | string | null
-    webhookSecret?: StringNullableFilter<"User"> | string | null
     stripe_user_id?: StringNullableFilter<"User"> | string | null
+    stripeCustomerId?: StringNullableFilter<"User"> | string | null
   }
 
   export type ProjectCreateManyUserInput = {
@@ -5128,10 +5056,8 @@ export namespace Prisma {
     subscription?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    lemonSqueezyApiKey?: NullableStringFieldUpdateOperationsInput | string | null
-    storeId?: NullableStringFieldUpdateOperationsInput | string | null
-    webhookSecret?: NullableStringFieldUpdateOperationsInput | string | null
     stripe_user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     Projects?: ProjectUpdateManyWithoutUserNestedInput
   }
 
@@ -5144,10 +5070,8 @@ export namespace Prisma {
     subscription?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    lemonSqueezyApiKey?: NullableStringFieldUpdateOperationsInput | string | null
-    storeId?: NullableStringFieldUpdateOperationsInput | string | null
-    webhookSecret?: NullableStringFieldUpdateOperationsInput | string | null
     stripe_user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     Projects?: ProjectUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -5160,10 +5084,8 @@ export namespace Prisma {
     subscription?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    lemonSqueezyApiKey?: NullableStringFieldUpdateOperationsInput | string | null
-    storeId?: NullableStringFieldUpdateOperationsInput | string | null
-    webhookSecret?: NullableStringFieldUpdateOperationsInput | string | null
     stripe_user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

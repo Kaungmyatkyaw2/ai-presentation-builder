@@ -37,8 +37,6 @@ export const buyTemplate = async (project: Project) => {
     },
   });
 
-  console.log(seller, project.userId);
-
   if (!seller?.stripe_user_id) {
     return {
       status: 400,
@@ -46,7 +44,7 @@ export const buyTemplate = async (project: Project) => {
     };
   }
 
-  const application_fee_amount = (project.salePrice || 0) * 0.1;
+  const application_fee_amount = project.salePrice! * 0.1;
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
@@ -64,7 +62,7 @@ export const buyTemplate = async (project: Project) => {
     ],
     payment_intent_data: {
       application_fee_amount,
-      on_behalf_of: seller.stripe_user_id, // ✅ This is the key fix
+      on_behalf_of: seller.stripe_user_id,
 
       transfer_data: {
         destination: seller?.stripe_user_id,
