@@ -2,12 +2,13 @@
 
 import { getStripeConnectionUrl } from "@/actions/stripe";
 import { Button } from "@/components/ui/button";
+import { User } from "@/generated/prisma";
 import { DollarSignIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 
-const StripeConnectButton = () => {
+const StripeConnectButton = ({user} : {user : User}) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -25,10 +26,15 @@ const StripeConnectButton = () => {
   };
   return (
     <div className="">
-      <Button onClick={handleClickConnect} disabled={loading}>
-        <DollarSignIcon className="size-4 mr-2" />
+     {
+      user.stripe_user_id ?
+       <p className="font-bold text-black dark:text-white">You have connected your stripe account!</p>
+      : 
+       <Button onClick={handleClickConnect} disabled={loading || !!user.stripe_user_id}>
+        <DollarSignIcon className="size-4 mr-1" />
         {loading ? "Connecting" : "Connect"} Stripe Account {loading ? "..." : ""}
       </Button>
+     }
     </div>
   );
 };

@@ -4,7 +4,6 @@ import StripeConnectButton from './_components/stripe-connect-button';
 const SettingsPage = async () => {
   const checkUser = await onAuthenticateUser();
 
-
   return (
     <div className="flex flex-col gap-6 relative">
       <div className="flex justify-between items-center ">
@@ -12,13 +11,12 @@ const SettingsPage = async () => {
           <h1 className="text-2xl font-semibold dark:text-primary backdrop-blur-lg">
             Settings
           </h1>
-          <p className="text-base font-normal dark:text-secondary">
+          <p className="text-base font-normal dark:text-white/90">
             All your settings
           </p>
         </div>
       </div>
-      <StripeConnectButton/>
-      {/* <LemonSqueezyCredentials user={checkUser.user!} /> */}
+      <StripeConnectButton user={checkUser.user!} />
     </div>
   );
 };
