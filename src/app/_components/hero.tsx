@@ -1,4 +1,12 @@
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+
+const images = [
+  "https://plus.unsplash.com/premium_photo-1683121366070-5ceb7e007a97?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+];
 
 const Hero = () => {
   return (
@@ -12,12 +20,13 @@ const Hero = () => {
                 <span className="text-vivid">AI</span>
               </h1>
               <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Turn your ideas into professional presentations in seconds. No design skills required.
+                Turn your ideas into professional presentations in seconds. No
+                design skills required.
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Button size="lg" className="px-8">
-                Get Started
+              <Button size="lg" className="px-8" asChild>
+                <Link href={"/dashboard"}>Get Started</Link>
               </Button>
               <Button size="lg" variant="outline">
                 Learn More
@@ -26,11 +35,10 @@ const Hero = () => {
             <div className="mt-6 flex items-center space-x-4 text-sm">
               <div className="flex items-center">
                 <div className="flex -space-x-2">
-                  {[1, 2, 3].map((i) => (
-                    <div
-                      key={i}
-                      className="inline-block h-8 w-8 rounded-full border-2 border-background bg-muted"
-                    />
+                  {images.map((img) => (
+                    <Avatar key={img}>
+                      <AvatarImage src={img} className="size-8 object-cover" />
+                    </Avatar>
                   ))}
                 </div>
                 <span className="ml-2 text-muted-foreground">
@@ -93,9 +101,7 @@ const Hero = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span className="ml-2 text-muted-foreground">
-                  5.0 Rating
-                </span>
+                <span className="ml-2 text-muted-foreground">5.0 Rating</span>
               </div>
             </div>
           </div>
@@ -107,7 +113,9 @@ const Hero = () => {
                   <div className="absolute inset-0 bg-[url('/thumbnail.png')] bg-cover bg-center opacity-100" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                    <h3 className="text-lg font-medium">Your AI Presentation</h3>
+                    <h3 className="text-lg font-medium">
+                      Your AI Presentation
+                    </h3>
                     <p className="text-sm opacity-80">Created in seconds</p>
                   </div>
                 </div>

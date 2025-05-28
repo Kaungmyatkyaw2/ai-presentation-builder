@@ -1,41 +1,28 @@
-import { AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Menu, Moon, Sun, X } from "lucide-react";
+import { useTheme } from "next-themes";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useState } from "react";
 
-interface NavbarProps {
-  isDarkMode: boolean;
-  toggleDarkMode: () => void;
-}
-
-const Navbar = ({ isDarkMode, toggleDarkMode }: NavbarProps) => {
-  const [isScrolled, setIsScrolled] = useState(false);
+const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
+  const { setTheme, theme } = useTheme();
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const toggleDarkMode = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
+  const isDarkMode = theme == "dark";
 
   return (
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 flex !justify-center",
-        isScrolled
-          ? "bg-background/80 backdrop-blur-md py-3 shadow-sm"
-          : "bg-transparent py-5"
+
+        "bg-background/80 backdrop-blur-md py-3 shadow-sm"
       )}
     >
       <div className="container flex items-center justify-between">
@@ -81,7 +68,9 @@ const Navbar = ({ isDarkMode, toggleDarkMode }: NavbarProps) => {
           >
             {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
           </Button>
-          <Button>Get Started</Button>
+          <Button asChild>
+            <Link href={"/dashboard"}>Get Started</Link>
+          </Button>
         </nav>
 
         {/* Mobile Menu Button */}

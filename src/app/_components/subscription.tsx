@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
+import Link from "next/link";
 
 const Subscription = () => {
   const features = [
@@ -42,13 +43,16 @@ const Subscription = () => {
             <div className="flex flex-col p-6 py-8">
               <h3 className="text-2xl font-bold">Premium Plan</h3>
               <div className="mt-4 flex items-baseline text-5xl font-extrabold">
-                100,000 <span className="ml-1 text-lg font-normal text-muted-foreground">MMK/month</span>
+                100,000{" "}
+                <span className="ml-1 text-lg font-normal text-muted-foreground">
+                  MMK/month
+                </span>
               </div>
               <p className="mt-3 text-sm text-muted-foreground">
                 Billed monthly. Cancel anytime.
               </p>
-              <Button className="mt-6 w-full" size="lg">
-                Get Started
+              <Button className="mt-6 w-full" size="lg" asChild>
+                <Link href={"/dashboard"}>Get Started</Link>
               </Button>
             </div>
             <div className="p-6 bg-muted/50 border-t">
